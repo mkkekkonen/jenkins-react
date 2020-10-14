@@ -2,10 +2,18 @@ pipeline {
 	agent any
 	stages {
 		stage('Build') {
-			checkout scm
-			powershell 'npm run build'
+			script {
+				try {
+					echo '### BUILDING ###'
+					checkout scm
+					powershell 'npm run build'
+				} catch (err) {
+					echo err.getMessage()
+				}
+			}
 		}
 		stage('Test') {
+			echo '### TESTING ###'
 			powershell 'npm test'
 		}
 	}
