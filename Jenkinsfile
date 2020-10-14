@@ -24,7 +24,7 @@ pipeline {
 		stage('Test') {
 			steps {
 				echo '### TESTING ###'
-				powershell 'npm test'
+				// powershell 'npm test'
 			}
 		}
 	}
