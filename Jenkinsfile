@@ -1,6 +1,13 @@
 pipeline {
 	agent any
 	stages {
+		stage ('Setup') {
+			steps {
+				checkout scm
+				echo '### INSTALLING PACKAGES ###'
+				powershell 'npm install'
+			}
+		}
 		stage('Build') {
 			steps {
 				script {
